@@ -25,7 +25,7 @@ jobs:
         run: docker push inbaanbu1998/git_action_project_2:latest
   deploy:
     needs: build
-    runs-on: [aws-ec2]
+    runs-on: ["aws-ec2"]
     steps:
       - name: Login to docker hub
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
