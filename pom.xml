@@ -42,6 +42,8 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+				<finalName>git_action_project_2</finalName>
+		
 	</build>
 
 </project>
