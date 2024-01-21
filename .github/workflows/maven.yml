@@ -23,3 +23,15 @@ jobs:
         run: docker build -t inbaanbu1998/git_action_project_2 .
       - name: Publish image to docker hub
         run: docker push inbaanbu1998/git_action_project_2:latest
+  deploy:
+    needs: build
+    runs-on: [aws-ec2]
+    steps:
+      - name: Login to docker hub
+        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+      - name: Pull Image from docker hub
+        run: docker pull inbaanbu1998/git_action_project_2:latest
+      - name: Delete old container
+        run: docker rm -f git_action_project_2-container
+      - name: Run docker container
+        run: docker run -d -p 8090:8090 --name git_action_project_2-container inbaanbu1998/git_action_project_2
