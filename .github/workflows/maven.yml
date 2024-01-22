@@ -27,14 +27,9 @@ jobs:
     needs: build
     runs-on: [git-ec2]
     steps:
-      - name: Install Docker on the runner
-        run: |
-          sudo yum install -y docker
-          sudo service docker start
-          sudo systemctl enable docker
-      - name: Pull Image from Docker Hub
+      - name: Pull Image from docker hub
         run: docker pull inbaanbu1998/git_action_project_2:latest
-      - name: Stop and Remove old container (if exists)
-        run: docker stop git_action_project_2-container || true && docker rm git_action_project_2-container || true
-      - name: Run Docker container
-        run: docker run -d -p 8080:8080 --name git_action_project_2-container inbaanbu1998/git_action_project_2:latest
+      - name: Delete old container
+        run: docker rm -f git_action_project_2-container
+      - name: Run docker container
+        run: docker run -d -p 8080:8080 --name git_action_project_2-container inbaanbu1998/git_action_project_2
