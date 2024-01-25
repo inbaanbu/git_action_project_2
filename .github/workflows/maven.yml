@@ -30,6 +30,6 @@ jobs:
       - name: Pull Image from docker hub
         run: sudo docker pull inbaanbu1998/git_action_project_2:latest
       - name: Delete old container
-        run: docker rm -f git_action_project_2-container
+        run: sudo docker rm -f git_action_project_2-container
       - name: Run docker container
         run: docker run -d -p 8080:8080 --name git_action_project_2-container inbaanbu1998/git_action_project_2
