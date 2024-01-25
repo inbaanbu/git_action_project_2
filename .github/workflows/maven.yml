@@ -25,11 +25,11 @@ jobs:
         run: docker push inbaanbu1998/git_action_project_2:latest
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Pull Image from docker hub
-        run: docker pull inbaanbu1998/git_action_project_2:latest
+        run: sudo docker pull inbaanbu1998/git_action_project_2:latest
       - name: Delete old container
-        run: docker rm -f git_action_project_2-container
+        run: sudo docker rm -f git_action_project_2-container
       - name: Run docker container
-        run: docker run -d -p 8080:8080 --name git_action_project_2-container inbaanbu1998/git_action_project_2
+        run: sudo docker run -d -p 8080:8080 --name git_action_project_2-container inbaanbu1998/git_action_project_2
