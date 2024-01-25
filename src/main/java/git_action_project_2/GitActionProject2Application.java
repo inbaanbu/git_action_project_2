@@ -18,16 +18,11 @@ public class GitActionProject2Application {
 		return "hii inba code is working";
 	}
 	
-
-
-	@GetMapping("/user/details")
+   @GetMapping("/user/details")
 	public String user1() {
-		return "hii inba code is working";
+		return "first time using aws code deployed the code using git action";
 	}
 	
-	@GetMapping("/user")
-	public String user6() {
-		return "hii inba code is working";
-	}
+	
 
 }
