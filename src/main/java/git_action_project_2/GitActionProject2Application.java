@@ -22,5 +22,10 @@ public class GitActionProject2Application {
 	public String user1() {
 		return "hii inba code is working";
 	}
+	
+	@GetMapping("/user")
+	public String user6() {
+		return "hii inba code is working";
+	}
 
 }
